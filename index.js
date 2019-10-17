@@ -49,7 +49,7 @@ client.on("message", msg => {
 
               if (erros) {
                 msg.channel.send('Player not found!');
-                return console.log(erros);
+                console.log(erros);
               }
             });
 
@@ -57,12 +57,13 @@ client.on("message", msg => {
           msg.channel.send('Player not found!');
         }
       } catch (error) {
+        console.log(error)
         msg.channel.send('Player not found!');
       }
 
       if (err) {
         msg.channel.send('Player not found!');
-        return console.log(err);
+        console.log(err);
 
       }
     });
