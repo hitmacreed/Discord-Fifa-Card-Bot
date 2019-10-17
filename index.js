@@ -10,25 +10,22 @@ client.on("message", msg => {
   //my bot id
   const prefix = msg.content.split(" ")[0];
   // get name typed
-  var suffix = msg.content.substring(msg.content.indexOf(" ") + 2);
-
+  var suffix = msg.content.substring(msg.content.indexOf(" ") + 1);
   if (prefix === '<@633771218553798696>') {
     request(`https://www.futbin.com/search?year=20&extra=1&term=${suffix}`, {
       json: true
     }, (err, body) => {
-     console.log("TCL: body", body)
-        
-      var cardResult = body[0];
-      try {
 
-        if (!body.includes("Whoops, an error occured.")) {
-          
+          var cardResult = body.body[0];
+      try {
+        
           // GET PLAYER REAUL ID FROM  FUTBIN HACK
           var getIdPriceFullUrl = cardResult["image"];
           var n = getIdPriceFullUrl.lastIndexOf('/');
           var getid = getIdPriceFullUrl.substring(n + 1);
           var remove_after = getid.indexOf('.');
           var realPlayerId = getid.substring(0, remove_after);
+
 
           request(`https://www.futbin.com/20/playerPrices?player=${realPlayerId}`, {
               json: true
@@ -40,8 +37,8 @@ client.on("message", msg => {
                 .setDescription("Name: " + cardResult["full_name"] + "\n" + 
                 "Rating: " + cardResult["rating"] + "\n" +
                 "Position: " + cardResult["position"] + "\n" +
-                "Xbox: " + playerPrices[realPlayerId]["prices"]["xbox"]["LCPrice"] + "\n" +
-                "Ps4: " + playerPrices[realPlayerId]["prices"]["ps"]["LCPrice"])
+                "Xbox: " + playerPrices["body"][realPlayerId]["prices"]["xbox"]["LCPrice"] + "\n" +
+                "Ps4: " + playerPrices["body"][realPlayerId]["prices"]["ps"]["LCPrice"])
                 .setURL(`https://www.futbin.com/20/player/${cardResult["id"]}`)
                 .setURL(`https://www.futbin.com/20/player/${cardResult["id"]}`)
                 .setAuthor("Fifa Cards Bot")
@@ -49,26 +46,21 @@ client.on("message", msg => {
               msg.channel.send(playerDetail);
 
               if (erros) {
-                 msg.channel.send('Player not found!');
-                console.log(erros);
+                msg.channel.send('Player not found!');
               }
             });
 
-        } else {
-          msg.channel.send('Player not found!');
-        }
       } catch (error) {
-        console.log(error)
         msg.channel.send('Player not found!');
       }
-
+       
       if (err) {
         msg.channel.send('Player not found!');
-        console.log(err);
-
       }
     });
 
   }
 });
+
+
 client.login(process.env.BOT_TOKEN);
