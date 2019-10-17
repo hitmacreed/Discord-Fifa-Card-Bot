@@ -1,0 +1,17 @@
+{
+  "name": "fifa_discord_bot",
+  "version": "1.0.0",
+  "description": "fifa discord cards",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "nodemon index.js"
+  },
+  "author": "Kevin Dias",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "nodemon": "^1.19.3",
+    "request": "^2.88.0"
+  }
+}
