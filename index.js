@@ -40,7 +40,6 @@ client.on("message", msg => {
                 "Xbox: " + playerPrices["body"][realPlayerId]["prices"]["xbox"]["LCPrice"] + "\n" +
                 "Ps4: " + playerPrices["body"][realPlayerId]["prices"]["ps"]["LCPrice"])
                 .setURL(`https://www.futbin.com/20/player/${cardResult["id"]}`)
-                .setURL(`https://www.futbin.com/20/player/${cardResult["id"]}`)
                 .setAuthor("Fifa Cards Bot")
                 .setColor("#FD2258")
               msg.channel.send(playerDetail);
