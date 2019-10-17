@@ -16,11 +16,12 @@ client.on("message", msg => {
     request(`https://www.futbin.com/search?year=20&extra=1&term=${suffix}`, {
       json: true
     }, (err, body) => {
-
+     console.log("TCL: body", body)
+        
       var cardResult = body[0];
       try {
 
-        if (!body.includes("Whoops, an error occured.") || !body.includes("Sphinx Connection failed")) {
+        if (!body.includes("Whoops, an error occured.")) {
           
           // GET PLAYER REAUL ID FROM  FUTBIN HACK
           var getIdPriceFullUrl = cardResult["image"];
@@ -48,7 +49,7 @@ client.on("message", msg => {
               msg.channel.send(playerDetail);
 
               if (erros) {
-                msg.channel.send('Player not found!');
+                 msg.channel.send('Player not found!');
                 console.log(erros);
               }
             });
@@ -70,5 +71,4 @@ client.on("message", msg => {
 
   }
 });
-
 client.login(process.env.BOT_TOKEN);
