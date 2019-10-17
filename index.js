@@ -1,4 +1,3 @@
-const token = "NjMzNzcxMjE4NTUzNzk4Njk2.XaY1FA.6WQC1aOAPJIqDpdPw_ibMq6eJMA";
 const { Client, RichEmbed } = require('discord.js');
 const request = require('request');
 const client = new Client();
@@ -71,4 +70,4 @@ client.on("message", msg => {
   }
 });
 
-client.login(token);
+client.login(process.env.BOT_TOKEN);
