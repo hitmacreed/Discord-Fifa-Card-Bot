@@ -6,13 +6,19 @@
 ## Installation
 
 ```sh
-    npm i
+git clone https://github.com/hitmacreed/Fifa-Card-Bot.git
+```
+
+## Dependecies
+
+```sh
+npm install
 ```
 
 
-## Run
+## Run Project
 
 ```sh
-   node index.js
+node index.js
 ```
 
